@@ -47,4 +47,11 @@
 
 ## Deployment
 
-- Pending: GitHub repo push, GitHub Pages publish, live HTTP 200 and live HTML checks.
+- PASS: GitHub repo created and `main` pushed.
+- PASS: Static export published to `gh-pages` branch.
+- PASS: GitHub Pages source is `gh-pages` branch, `/` path.
+- PASS: Live URL returns HTTP 200.
+- PASS: Live HTML contains business name, one H1, one form, canonical, OG title/URL/image and schema.
+- PASS: Live CSS and main OG/work image return HTTP 200.
+- PASS: Live HTML has no Google Maps iframe and no testimonial markup.
+- NOTE: Extra live screenshot command was blocked by the local OpenClaw hook; local Playwright screenshots passed before deployment and live assets/HTML were verified directly.
