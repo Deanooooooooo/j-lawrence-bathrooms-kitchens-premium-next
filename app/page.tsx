@@ -1,10 +1,21 @@
-import { Bath, CheckCircle2, ChefHat, Facebook, Images, Mail, Phone, ShieldCheck, Wrench } from "lucide-react";
+import {
+  ArrowUpRight,
+  Bath,
+  CheckCircle2,
+  ChefHat,
+  Facebook,
+  Hammer,
+  Images,
+  Mail,
+  Phone,
+  ShieldCheck,
+  Sparkles,
+  Wrench
+} from "lucide-react";
 import { EnquiryForm } from "../components/enquiry-form";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  "https://deanooooooooo.github.io";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://deanooooooooo.github.io";
 const facebookUrl = "https://www.facebook.com/profile.php?id=100089767462854";
 const phoneDisplay = "+44 7399 500429";
 const phoneHref = "tel:+447399500429";
@@ -15,28 +26,31 @@ const img = (path: string) => `${basePath}${path}`;
 const services = [
   {
     icon: Bath,
-    title: "Bathrooms",
-    intro: "Fitting, tiling, shower areas, flooring and finishing details for bathroom updates.",
-    points: ["Refits and room updates", "Shower and bath areas", "Tiling and finishing"]
+    title: "Bathroom fitting",
+    body: "Refits, shower areas, tiling, flooring, trims and finishing details for rooms that need to work every day."
   },
   {
     icon: ChefHat,
-    title: "Kitchens",
-    intro: "Kitchen fitting and practical room improvements where tidy edges and careful sequencing matter.",
-    points: ["Cabinet fitting support", "Surfaces and splashbacks", "Flooring and trim details"]
+    title: "Kitchen fitting",
+    body: "Cabinet fitting support, surfaces, splashbacks, flooring and practical finishing around the kitchen."
+  },
+  {
+    icon: Hammer,
+    title: "Renovation work",
+    body: "Room updates, strip-out, preparation and careful handover when the job has several moving parts."
   },
   {
     icon: Wrench,
-    title: "Renovation & maintenance",
-    intro: "Room renovation and smaller property jobs that need a capable fitter and tidy finish.",
-    points: ["Strip-out and refresh work", "Repairs and adjustments", "Finishing and handover"]
+    title: "Maintenance",
+    body: "Smaller property jobs, repairs and adjustments where direct contact and a tidy finish matter."
   }
 ];
 
-const strengths = [
-  "Bathrooms, kitchens, renovation and maintenance",
-  "Direct contact with Jason",
-  "Basildon based"
+const proofPoints = [
+  "Basildon based bathroom, kitchen and renovation work.",
+  "Direct phone and email contact with Jason.",
+  "Public Facebook profile with real project photos.",
+  "Quote route built around room details, photos, timing and location."
 ];
 
 const workImages = [
@@ -47,39 +61,39 @@ const workImages = [
   },
   {
     src: "/images/easy-bathrooms-display-thumb.jpg",
-    alt: "Bathroom display tiling work in progress",
-    label: "Tiling detail"
+    alt: "Bathroom display area with preparation work underway",
+    label: "Display tiling prep"
   },
   {
     src: "/images/bathroom-two-rooms.jpg",
-    alt: "Finished bathroom shower area",
+    alt: "Finished bathroom shower room from a public Facebook photo",
     label: "Room update"
   }
 ];
 
 const steps = [
   "Call or send the quote form.",
-  "Share photos, measurements and timing.",
+  "Share the room, photos, timing and area.",
   "Agree what is being fitted, repaired or refreshed.",
-  "Get the room finished cleanly and ready to use."
+  "Get the work finished cleanly and ready to use."
 ];
 
 const faqs = [
   {
     q: "What work does J.Lawrence Bathrooms and Kitchens take on?",
-    a: "Bathrooms, kitchens, renovation work and general maintenance."
+    a: "Bathrooms, kitchens, renovation work and general maintenance around Basildon."
   },
   {
-    q: "Where is the business based?",
-    a: "J.Lawrence Bathrooms and Kitchens is based in Basildon."
+    q: "Can I send photos before asking for a quote?",
+    a: "Yes. Photos help show access, current condition, measurements and the finish you want."
   },
   {
-    q: "Can I send photos of the room?",
-    a: "Yes. Photos are useful for bathrooms, kitchens and maintenance jobs because they show access, condition and the level of finish needed."
+    q: "What is the fastest way to ask?",
+    a: `Call ${phoneDisplay}. If email is easier, use the enquiry form and it will open a ready-made email.`
   },
   {
-    q: "Is there a phone number?",
-    a: `Yes. Call ${phoneDisplay} or email ${emailAddress}.`
+    q: "Is Facebook the main contact route?",
+    a: "No. The site keeps Facebook as proof and sends quote requests through phone or email first."
   }
 ];
 
@@ -88,56 +102,42 @@ const schema = {
   "@type": "HomeAndConstructionBusiness",
   name: "J.Lawrence Bathrooms and Kitchens",
   description:
-    "Experienced kitchen and bathroom fitter in Basildon, also covering renovation and general maintenance work.",
+    "Bathroom fitter, kitchen fitter and renovation work in Basildon, with direct phone and email quote requests.",
   url: `${siteUrl}${basePath}/`,
   image: `${siteUrl}${basePath}/images/completed-bathroom-crop.jpg`,
   logo: `${siteUrl}${basePath}/images/j-lawrence-logo-crop.jpg`,
   telephone: phoneDisplay,
   email: emailAddress,
-  areaServed: {
-    "@type": "City",
-    name: "Basildon"
-  },
+  areaServed: { "@type": "City", name: "Basildon" },
   sameAs: [facebookUrl],
   makesOffer: services.map((service) => ({
     "@type": "Offer",
-    itemOffered: {
-      "@type": "Service",
-      name: `${service.title} fitting and maintenance`
-    }
+    itemOffered: { "@type": "Service", name: service.title }
   }))
 };
 
 export default function HomePage() {
   return (
-    <main className="overflow-hidden">
+    <main className="site-root">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      <header className="sticky top-0 z-40 border-b border-ink/10 bg-white/95 backdrop-blur-xl">
-        <div className="section-shell flex h-[var(--header-height)] items-center justify-between gap-4">
+      <header className="site-header">
+        <div className="section-shell header-inner">
           <a href="#top" className="brand-lockup" aria-label="J.Lawrence Bathrooms and Kitchens home">
-            <img src={img("/images/j-lawrence-logo-crop.jpg")} alt="J.Lawrence Bathrooms and Kitchens" className="brand-lockup__logo" />
+            <img src={img("/images/j-lawrence-logo-crop.jpg")} alt="J.Lawrence Bathrooms and Kitchens" />
           </a>
-          <nav className="site-nav hidden items-center gap-7 font-bold text-graphite/72 md:flex">
-            <a href="#services" className="hover:text-ink">
-              Services
-            </a>
-            <a href="#work" className="hover:text-ink">
-              Work
-            </a>
-            <a href="#enquiry" className="hover:text-ink">
-              Enquiry
-            </a>
-            <a href="#faq" className="hover:text-ink">
-              FAQ
-            </a>
+          <nav className="site-nav" aria-label="Main navigation">
+            <a href="#services">Services</a>
+            <a href="#proof">Proof</a>
+            <a href="#work">Work</a>
+            <a href="#contact">Contact</a>
           </nav>
-          <a href={phoneHref} className="button button--dark header-call">
-            <Phone className="h-4 w-4" aria-hidden="true" />
-            {phoneDisplay}
+          <a href={phoneHref} className="button button--gold header-call">
+            <Phone aria-hidden="true" />
+            <span>{phoneDisplay}</span>
           </a>
         </div>
       </header>
@@ -147,66 +147,59 @@ export default function HomePage() {
         className="hero"
         style={{ backgroundImage: `url(${img("/images/completed-bathroom-crop.jpg")})` }}
       >
-        <div className="section-shell hero__content">
+        <div className="section-shell hero-grid">
           <div className="hero-copy">
-            <p className="eyebrow">Basildon bathroom & kitchen fitter</p>
-            <h1>
-              Bathrooms and kitchens fitted properly.
-            </h1>
-            <p>
-              J.Lawrence Bathrooms and Kitchens handles bathroom refits, kitchen fitting,
-              renovation work and practical maintenance around Basildon.
+            <p className="pill">
+              <ShieldCheck aria-hidden="true" />
+              Basildon bathroom and kitchen fitter
+            </p>
+            <h1>Bathrooms and kitchens fitted properly.</h1>
+            <p className="hero-lede">
+              Bathroom refits, kitchen fitting, renovation and maintenance work with a direct route to Jason before the job starts.
             </p>
             <div className="hero-actions">
-              <a href={phoneHref} className="button button--primary">
-                <Phone className="h-4 w-4" aria-hidden="true" />
+              <a href={phoneHref} className="button button--gold">
+                <Phone aria-hidden="true" />
                 Call {phoneDisplay}
               </a>
-              <a href="#enquiry" className="button button--light">
-                <Mail className="h-4 w-4" aria-hidden="true" />
+              <a href="#enquiry" className="button button--glass">
+                <ArrowUpRight aria-hidden="true" />
                 Request a quote
               </a>
             </div>
-            <div className="trust-list">
-              {strengths.map((item) => (
-                <span key={item}>
-                  <ShieldCheck aria-hidden="true" />
-                  {item}
-                </span>
-              ))}
-            </div>
           </div>
 
-          <aside className="hero-form-wrap" aria-label="Request a quote">
+          <aside className="hero-form" aria-label="Request a quote">
             <EnquiryForm emailAddress={emailAddress} phoneHref={phoneHref} phoneDisplay={phoneDisplay} />
           </aside>
         </div>
       </section>
 
-      <section id="services" className="section-block section-block--white">
-        <div className="section-shell">
-          <div className="max-w-3xl">
-            <p className="eyebrow">Services</p>
-            <h2 className="section-title">
-              Practical work for rooms people use every day.
-            </h2>
+      <section className="metric-strip section-shell" aria-label="Quick facts">
+        {[
+          ["4", "service lanes"],
+          ["1", "direct quote route"],
+          ["3", "public work photos mapped"]
+        ].map(([value, label]) => (
+          <div key={label} className="metric-card">
+            <strong>{value}</strong>
+            <span>{label}</span>
           </div>
+        ))}
+      </section>
+
+      <section id="services" className="section-block section-block--light">
+        <div className="section-shell">
+          <p className="eyebrow">Services</p>
+          <h2 className="section-title">Practical room work without the brochure fluff.</h2>
           <div className="service-grid">
             {services.map((service) => {
               const Icon = service.icon;
               return (
                 <article key={service.title} className="service-card">
-                  <Icon className="h-8 w-8 text-basin" aria-hidden="true" />
+                  <Icon aria-hidden="true" />
                   <h3>{service.title}</h3>
-                  <p>{service.intro}</p>
-                  <ul>
-                    {service.points.map((point) => (
-                      <li key={point}>
-                        <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <p>{service.body}</p>
                 </article>
               );
             })}
@@ -214,113 +207,141 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="work" className="section-block">
-        <div className="section-shell portfolio-layout">
+      <section id="proof" className="section-block section-block--dark">
+        <div className="section-shell proof-grid">
           <div>
-            <p className="eyebrow">Bathroom work</p>
-            <h2 className="section-title">
-              A clear look at recent bathroom work.
-            </h2>
+            <p className="eyebrow">Confidence path</p>
+            <h2 className="section-title">The page should make the call feel obvious.</h2>
             <p className="section-intro">
-              Finished shower areas, tiling preparation and room updates shown with enough space to judge
-              the finish before making contact.
+              The useful proof is simple: what work is offered, where the business is based, what real photos exist, and how to ask for a quote.
             </p>
-            <div className="step-list">
-              {steps.map((step, index) => (
-                <div key={step} className="step-row">
-                  <span>{index + 1}</span>
-                  <p>{step}</p>
-                </div>
-              ))}
-            </div>
           </div>
-          <div className="work-grid">
-            {workImages.map((image) => (
-              <figure key={image.src} className="work-card">
-                <img src={img(image.src)} alt={image.alt} />
-                <figcaption>
-                  <Images className="h-4 w-4" aria-hidden="true" />
-                  {image.label}
-                </figcaption>
-              </figure>
+          <div className="proof-list">
+            {proofPoints.map((item) => (
+              <div key={item} className="proof-row">
+                <CheckCircle2 aria-hidden="true" />
+                <span>{item}</span>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="faq" className="section-block section-block--white">
-        <div className="section-shell grid gap-9 lg:grid-cols-[0.75fr_1.25fr]">
+      <section id="work" className="work-section">
+        <div className="section-shell">
+          <p className="eyebrow">Real project photos</p>
+          <h2 className="section-title">Vertical bathroom photos shown in vertical frames.</h2>
+          <p className="section-intro">
+            These are public Facebook assets, so the layout respects their portrait shape instead of chopping them into bad landscape cards.
+          </p>
+        </div>
+        <div className="work-reel" aria-label="J.Lawrence work photos">
+          {workImages.map((image, index) => (
+            <figure key={`${image.src}-${index}`} className={index === 3 ? "work-card work-card--small" : "work-card"}>
+              <img src={img(image.src)} alt={image.alt} />
+              <figcaption>
+                <Images aria-hidden="true" />
+                {String(index + 1).padStart(2, "0")} / {image.label}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
+      <section className="section-block section-block--light">
+        <div className="section-shell story-grid">
           <div>
-            <p className="eyebrow">Questions</p>
-            <h2 className="section-title">
-              Useful details before you message.
-            </h2>
+            <p className="eyebrow">How quote requests work</p>
+            <h2 className="section-title">Send enough detail for the job to make sense.</h2>
+            <div className="step-list">
+              {steps.map((step) => (
+                <div key={step} className="step-row">
+                  <CheckCircle2 aria-hidden="true" />
+                  <span>{step}</span>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="grid gap-3">
+          <div className="quote-brief" aria-label="Useful details for quote requests">
+            <p className="eyebrow">Good enquiry details</p>
+            <h3>Room, location, photos, timing and finish.</h3>
+            <ul>
+              <li>What room needs fitting, repair or refresh work.</li>
+              <li>Where the job is around Basildon or nearby.</li>
+              <li>Photos, measurements and access details if available.</li>
+              <li>When you want the work looked at or started.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" className="section-block section-block--dark">
+        <div className="section-shell faq-grid">
+          <div>
+            <p className="eyebrow">FAQ</p>
+            <h2 className="section-title">Clear answers before the call.</h2>
+          </div>
+          <div className="faq-list">
             {faqs.map((faq) => (
-              <details key={faq.q} className="group rounded-[8px] border border-ink/10 bg-porcelain p-5 shadow-sm">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-lg font-black text-ink">
-                  {faq.q}
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-slatewash text-ink transition group-open:rotate-45">
-                    +
-                  </span>
-                </summary>
-                <p className="mt-4 max-w-3xl text-base leading-7 text-graphite/74">{faq.a}</p>
+              <details key={faq.q}>
+                <summary>{faq.q}<span>+</span></summary>
+                <p>{faq.a}</p>
               </details>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-porcelain pb-12 pt-4">
-        <div
-          className="section-shell final-band"
-          style={{ backgroundImage: `linear-gradient(90deg, rgba(16, 34, 49, 0.98), rgba(16, 34, 49, 0.78)), url(${img("/images/completed-bathroom-crop.jpg")})` }}
-        >
-          <div>
-            <p className="text-sm font-extrabold uppercase text-basin">Ready to ask?</p>
-            <h2 className="mt-3 max-w-2xl font-display text-4xl font-black leading-tight text-white sm:text-5xl">
-              Call or email with the room, photos and what needs changing.
-            </h2>
-            <a href={`mailto:${emailAddress}`} className="mt-4 inline-flex text-sm font-bold text-white/78 hover:text-white">
-              {emailAddress}
-            </a>
+      <section id="contact" className="section-block section-block--contact">
+        <div className="section-shell contact-grid">
+          <div className="contact-card">
+            <p className="eyebrow">Contact</p>
+            <h2>Call or email with the room, photos and timing.</h2>
+            <div className="contact-actions">
+              <a href={phoneHref}>
+                <Phone aria-hidden="true" />
+                {phoneDisplay}
+              </a>
+              <a href={`mailto:${emailAddress}`}>
+                <Mail aria-hidden="true" />
+                {emailAddress}
+              </a>
+              <a href={facebookUrl}>
+                <Facebook aria-hidden="true" />
+                Facebook proof
+              </a>
+            </div>
           </div>
-          <div className="flex flex-wrap gap-3">
-            <a href={phoneHref} className="button button--primary">
-              <Phone className="h-4 w-4" aria-hidden="true" />
-              Call now
-            </a>
-            <a href={`mailto:${emailAddress}`} className="button button--ghost">
-              <Mail className="h-4 w-4" aria-hidden="true" />
-              Email enquiry
+          <div
+            className="contact-photo"
+            style={{ backgroundImage: `linear-gradient(90deg, rgba(17, 25, 32, 0.92), rgba(17, 25, 32, 0.48)), url(${img("/images/completed-bathroom-crop.jpg")})` }}
+          >
+            <p>Basildon based</p>
+            <h3>Bathroom, kitchen, renovation and maintenance enquiries.</h3>
+            <a href="#enquiry" className="button button--gold">
+              <Sparkles aria-hidden="true" />
+              Start quote request
             </a>
           </div>
         </div>
       </section>
 
-      <footer className="border-t border-ink/10 bg-porcelain py-8">
-        <div className="section-shell flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-          <div className="brand-lockup">
-            <img src={img("/images/j-lawrence-logo-crop.jpg")} alt="J.Lawrence Bathrooms and Kitchens" className="brand-lockup__logo" />
+      <footer className="site-footer">
+        <div className="section-shell footer-inner">
+          <div className="footer-brand">
+            <img src={img("/images/j-lawrence-logo-crop.jpg")} alt="" />
+            <span>J.Lawrence Bathrooms and Kitchens</span>
           </div>
-          <div className="flex flex-wrap items-center gap-3 text-sm font-bold text-graphite/70">
-            <a href={phoneHref} className="hover:text-ink">
-              {phoneDisplay}
-            </a>
-            <a href={`mailto:${emailAddress}`} className="hover:text-ink">
-              {emailAddress}
-            </a>
-            <a href="#services" className="hover:text-ink">
-              Services
-            </a>
-            <a href="#enquiry" className="hover:text-ink">
-              Enquiry
-            </a>
-            <a href={facebookUrl} className="inline-flex items-center gap-2 hover:text-ink">
-              <Facebook className="h-4 w-4" aria-hidden="true" />
-              Facebook
-            </a>
+          <div className="footer-links">
+            {[
+              { href: phoneHref, label: "Call J.Lawrence Bathrooms and Kitchens", icon: <Phone aria-hidden="true" /> },
+              { href: `mailto:${emailAddress}`, label: "Email J.Lawrence Bathrooms and Kitchens", icon: <Mail aria-hidden="true" /> },
+              { href: facebookUrl, label: "Facebook", icon: <Facebook aria-hidden="true" /> }
+            ].map((link) => (
+              <a key={link.label} href={link.href} aria-label={link.label}>
+                {link.icon}
+              </a>
+            ))}
           </div>
         </div>
       </footer>
