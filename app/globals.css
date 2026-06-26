@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: "Inter";
+  --font-display: "Inter Tight";
+  --header-height: 76px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #f8fbfb;
+  color: #102231;
+  font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(90deg, rgba(16, 34, 49, 0.035) 1px, transparent 1px),
+    linear-gradient(rgba(16, 34, 49, 0.035) 1px, transparent 1px),
+    linear-gradient(135deg, #f8fbfb 0%, #edf5f6 48%, #f5f1ec 100%);
+  background-size: 42px 42px, 42px 42px, auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.section-shell {
+  width: min(1160px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+.eyebrow {
+  color: #237f91;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.glass-panel {
+  border: 1px solid rgba(16, 34, 49, 0.1);
+  background: rgba(255, 255, 255, 0.74);
+  box-shadow: 0 24px 80px rgba(16, 34, 49, 0.14);
+  backdrop-filter: blur(24px);
+}
+
+.tile-grid {
+  background:
+    linear-gradient(90deg, rgba(16, 34, 49, 0.06) 1px, transparent 1px),
+    linear-gradient(rgba(16, 34, 49, 0.06) 1px, transparent 1px),
+    #ffffff;
+  background-size: 28px 28px;
+}
+
+.field {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid rgba(16, 34, 49, 0.16);
+  background: rgba(255, 255, 255, 0.88);
+  padding: 0.86rem 0.95rem;
+  color: #102231;
+  outline: none;
+  transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.field:focus {
+  border-color: #33bfd8;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(51, 191, 216, 0.14);
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.42rem;
+  color: #43576a;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.reveal-card {
+  transform: translateY(10px);
+  animation: settle 620ms ease forwards;
+}
+
+@keyframes settle {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+}
