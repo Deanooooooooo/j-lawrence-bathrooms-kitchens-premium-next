@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Bath, Check, ChefHat, Clipboard, Facebook, Hammer, Wrench } from "lucide-react";
+import { Bath, Check, ChefHat, Facebook, Hammer, MessageSquareText, Wrench } from "lucide-react";
 
 const options = [
   {
@@ -33,17 +33,19 @@ type EnquiryFormProps = {
 export function EnquiryForm({ facebookUrl }: EnquiryFormProps) {
   const [selected, setSelected] = useState(options[0]);
   const [name, setName] = useState("");
-  const [location, setLocation] = useState("");
+  const [contact, setContact] = useState("");
+  const [area, setArea] = useState("");
   const [timing, setTiming] = useState("");
   const [details, setDetails] = useState("");
-  const [copied, setCopied] = useState(false);
+  const [sent, setSent] = useState(false);
 
   const preview = useMemo(
     () =>
       [
         `Enquiry type: ${selected.label}`,
         `Name: ${name || "[your name]"}`,
-        `Location: ${location || "[Basildon / nearby]"}`,
+        `Contact: ${contact || "[phone or email]"}`,
+        `Area: ${area || "[Basildon / nearby]"}`,
         `Timing: ${timing || "[ASAP / this month / flexible]"}`,
         "",
         "Job details:",
@@ -51,29 +53,30 @@ export function EnquiryForm({ facebookUrl }: EnquiryFormProps) {
         "",
         "I can send photos of the room if helpful."
       ].join("\n"),
-    [details, location, name, selected, timing]
+    [area, contact, details, name, selected, timing]
   );
 
-  async function copyPreview() {
+  async function sendEnquiry() {
     try {
       await navigator.clipboard.writeText(preview);
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 1800);
+      setSent(true);
+      window.setTimeout(() => setSent(false), 1800);
     } catch {
-      setCopied(false);
+      setSent(false);
     }
+    window.open(facebookUrl, "_blank", "noopener,noreferrer");
   }
 
   return (
     <form className="quote-panel" onSubmit={(event) => event.preventDefault()}>
       <div className="quote-panel__top">
         <div className="quote-panel__brand">
-          <Facebook aria-hidden="true" />
-          <span>Job enquiry</span>
+          <MessageSquareText aria-hidden="true" />
+          <span>Request a quote</span>
         </div>
-        <h3>Tell J.Lawrence what needs fitting or fixing</h3>
+        <h3>Tell us what room needs work</h3>
         <p>
-          Pick the job type, add the essentials and send the details through Facebook.
+          Add a few details and the best way to reach you. Photos can be sent afterwards if needed.
         </p>
       </div>
 
@@ -102,10 +105,19 @@ export function EnquiryForm({ facebookUrl }: EnquiryFormProps) {
           <input value={name} onChange={(event) => setName(event.target.value)} autoComplete="name" />
         </label>
         <label>
-          <span>Location</span>
+          <span>Phone or email</span>
           <input
-            value={location}
-            onChange={(event) => setLocation(event.target.value)}
+            value={contact}
+            onChange={(event) => setContact(event.target.value)}
+            placeholder="Best contact"
+            autoComplete="tel"
+          />
+        </label>
+        <label className="form-grid__wide">
+          <span>Area</span>
+          <input
+            value={area}
+            onChange={(event) => setArea(event.target.value)}
             placeholder="Basildon / nearby"
           />
         </label>
@@ -127,18 +139,14 @@ export function EnquiryForm({ facebookUrl }: EnquiryFormProps) {
         </label>
       </div>
 
-      <div className="message-preview" aria-live="polite">
-        <pre>{preview}</pre>
-      </div>
-
       <div className="quote-panel__actions">
-        <button className="button button--primary" type="button" onClick={copyPreview}>
-          {copied ? <Check aria-hidden="true" /> : <Clipboard aria-hidden="true" />}
-          {copied ? "Copied" : "Copy details"}
+        <button className="button button--primary" type="button" onClick={sendEnquiry}>
+          {sent ? <Check aria-hidden="true" /> : <MessageSquareText aria-hidden="true" />}
+          {sent ? "Details copied" : "Send enquiry"}
         </button>
         <a className="button button--outline" href={facebookUrl} target="_blank" rel="noreferrer">
           <Facebook aria-hidden="true" />
-          Open Facebook
+          Facebook
         </a>
       </div>
     </form>

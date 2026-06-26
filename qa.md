@@ -34,6 +34,8 @@
   - `qa/mobile-correction.png`
   - `qa/desktop-final.png`
   - `qa/mobile-final.png`
+  - `qa/desktop-rebuild.png`
+  - `qa/mobile-rebuild.png`
 
 ## SEO / Links / Schema
 
@@ -50,6 +52,7 @@
 - PASS: `npm run build` completed.
 - PASS: Correction build completed with `npm run build`.
 - PASS: Final local correction build completed after copy/form patch.
+- PASS: Rebuild places the enquiry form in the hero/right first viewport and removes the lower form workaround.
 - PASS: `.nojekyll` added to export.
 - PASS: Static export rendered locally at `http://127.0.0.1:3057`.
 

@@ -1,5 +1,4 @@
 import {
-  ArrowRight,
   Bath,
   CheckCircle2,
   ChefHat,
@@ -7,8 +6,6 @@ import {
   Hammer,
   Images,
   MessageSquareText,
-  Ruler,
-  ShieldCheck,
   Wrench
 } from "lucide-react";
 import { EnquiryForm } from "../components/enquiry-form";
@@ -146,9 +143,9 @@ export default function HomePage() {
               FAQ
             </a>
           </nav>
-          <a href={facebookUrl} className="button button--dark">
-            <Facebook className="h-4 w-4" aria-hidden="true" />
-            Message
+          <a href="#enquiry" className="button button--dark">
+            <MessageSquareText className="h-4 w-4" aria-hidden="true" />
+            Enquire
           </a>
         </div>
       </header>
@@ -168,33 +165,30 @@ export default function HomePage() {
               Bathroom and kitchen fitting in Basildon
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/82">
-              Experienced kitchen and bathroom fitting, renovation and general maintenance work for
-              homeowners who want the room finished properly.
+              Kitchen and bathroom fitting, renovation and maintenance work for homeowners who want
+              a clean finish and a room that feels ready to use.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a href={facebookUrl} className="button button--primary">
-                <Facebook className="h-4 w-4" aria-hidden="true" />
-                Message on Facebook
-              </a>
-              <a href="#enquiry" className="button button--ghost">
+              <a href="#enquiry" className="button button--primary">
                 <MessageSquareText className="h-4 w-4" aria-hidden="true" />
-                Send details
+                Request a quote
+              </a>
+              <a href={facebookUrl} className="button button--ghost">
+                <Facebook className="h-4 w-4" aria-hidden="true" />
+                Message
               </a>
             </div>
-          </div>
-
-          <aside className="hero-card" aria-label="Service summary">
-            <div>
-              <p className="text-sm font-extrabold uppercase text-basin">Home work covered</p>
-              <p className="mt-2 text-2xl font-black text-white">Bathrooms, kitchens and repairs</p>
-            </div>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="mt-8 grid max-w-xl grid-cols-2 gap-2 sm:grid-cols-4">
               {["Bathrooms", "Kitchens", "Renovation", "Maintenance"].map((item) => (
                 <span key={item} className="hero-chip">
                   {item}
                 </span>
               ))}
             </div>
+          </div>
+
+          <aside id="enquiry" className="hero-form-wrap" aria-label="Request a quote">
+            <EnquiryForm facebookUrl={facebookUrl} />
           </aside>
         </div>
       </section>
@@ -261,44 +255,6 @@ export default function HomePage() {
               </figure>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section id="enquiry" className="bg-ink py-14 text-white sm:py-20">
-        <div className="section-shell grid gap-9 lg:grid-cols-[0.86fr_1.14fr] lg:items-start">
-          <div>
-            <div className="logo-panel">
-              <img src={img("/images/j-lawrence-profile.jpg")} alt="" />
-              <div>
-                <p>J.Lawrence</p>
-                <span>Bathrooms & Kitchens</span>
-              </div>
-            </div>
-            <p className="mt-8 text-sm font-extrabold uppercase text-basin">Send a job enquiry</p>
-            <h2 className="mt-3 font-display text-4xl font-black leading-tight sm:text-5xl">
-              Send the room, the issue and the finish you want.
-            </h2>
-            <p className="mt-5 text-lg leading-8 text-white/72">
-              Add the basics before you message: what room needs work, where you are and when you
-              would like it looked at.
-            </p>
-            <div className="mt-7 grid gap-3 sm:grid-cols-3">
-              {[
-                [Ruler, "Room"],
-                [ShieldCheck, "Finish"],
-                [ArrowRight, "Timing"]
-              ].map(([Icon, label]) => {
-                const ItemIcon = Icon as typeof Ruler;
-                return (
-                  <div key={label as string} className="mini-proof">
-                    <ItemIcon className="h-5 w-5 text-basin" aria-hidden="true" />
-                    <span>{label as string}</span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-          <EnquiryForm facebookUrl={facebookUrl} />
         </div>
       </section>
 
