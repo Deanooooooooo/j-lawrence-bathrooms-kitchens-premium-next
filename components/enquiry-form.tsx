@@ -1,27 +1,23 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Bath, Check, ChefHat, Hammer, Mail, Phone, Wrench } from "lucide-react";
+import { Check, Mail, Phone } from "lucide-react";
 
 const options = [
   {
     label: "Bathroom",
-    icon: Bath,
     hint: "Example: shower area, tiling, vanity, flooring, leak, layout or full refit."
   },
   {
     label: "Kitchen",
-    icon: ChefHat,
     hint: "Example: cabinets, worktops, splashback, flooring, appliances or finishing work."
   },
   {
     label: "Renovation",
-    icon: Hammer,
     hint: "Example: what is being stripped out, what is staying and the finish you want."
   },
   {
     label: "Maintenance",
-    icon: Wrench,
     hint: "Example: list the jobs, what needs repairing and anything urgent."
   }
 ];
@@ -67,25 +63,22 @@ export function EnquiryForm({ emailAddress, phoneHref, phoneDisplay }: EnquiryFo
   }
 
   return (
-    <form className="quote-panel" onSubmit={(event) => event.preventDefault()}>
+    <form id="enquiry" className="quote-panel" onSubmit={(event) => event.preventDefault()}>
       <div className="quote-panel__top">
         <div className="quote-panel__brand">
           <Mail aria-hidden="true" />
-          <span>Quote request</span>
+          <span>Fast quote request</span>
         </div>
-        <h3>Request a bathroom or kitchen quote</h3>
-        <p>
-          Send the room details, preferred timing and best contact number. Photos can be added by email.
-        </p>
+        <h3>Tell Jason what needs doing.</h3>
+        <p>Leave the basics here, or call now if it is easier to explain.</p>
         <a className="quote-panel__phone" href={phoneHref}>
           <Phone aria-hidden="true" />
-          Prefer to talk? Call {phoneDisplay}
+          {phoneDisplay}
         </a>
       </div>
 
       <div className="service-switch" role="tablist" aria-label="Choose enquiry type">
         {options.map((option) => {
-          const Icon = option.icon;
           const active = option.label === selected.label;
           return (
             <button
@@ -95,7 +88,6 @@ export function EnquiryForm({ emailAddress, phoneHref, phoneDisplay }: EnquiryFo
               onClick={() => setSelected(option)}
               aria-pressed={active}
             >
-              <Icon aria-hidden="true" />
               <span>{option.label}</span>
             </button>
           );
@@ -125,7 +117,7 @@ export function EnquiryForm({ emailAddress, phoneHref, phoneDisplay }: EnquiryFo
           />
         </label>
         <label className="form-grid__wide">
-          <span>Timing</span>
+          <span>When</span>
           <input
             value={timing}
             onChange={(event) => setTiming(event.target.value)}
@@ -145,11 +137,11 @@ export function EnquiryForm({ emailAddress, phoneHref, phoneDisplay }: EnquiryFo
       <div className="quote-panel__actions">
         <button className="button button--primary" type="button" onClick={sendEnquiry}>
           {sent ? <Check aria-hidden="true" /> : <Mail aria-hidden="true" />}
-          {sent ? "Opening email" : "Email enquiry"}
+          {sent ? "Opening email" : "Send enquiry"}
         </button>
         <a className="button button--outline" href={phoneHref}>
           <Phone aria-hidden="true" />
-          Call
+          Call Jason
         </a>
       </div>
     </form>

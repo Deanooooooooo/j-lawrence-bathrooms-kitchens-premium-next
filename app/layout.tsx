@@ -18,7 +18,7 @@ const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ||
   "https://deanooooooooo.github.io";
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-const ogImage = `${siteUrl}${basePath}/images/completed-bathroom-reel-thumb.jpg`;
+const ogImage = `${siteUrl}${basePath}/images/completed-bathroom-crop.jpg`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
