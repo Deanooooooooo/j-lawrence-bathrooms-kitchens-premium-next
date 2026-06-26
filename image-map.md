@@ -49,6 +49,7 @@
 
 ## Placement Notes
 
-- The hero replaces image/media with a prominent email enquiry form, per request.
+- The hero uses `completed-bathroom-reel-thumb.jpg` as the main visual anchor.
+- The Facebook profile/logo image is used in the header lockup, hero badge, enquiry brand panel and footer.
 - The page uses verified Facebook visuals only. Generic CSS texture/grid treatments are design treatment only and are not presented as business work.
 - Any copy based on indexed Facebook captions is phrased as service context rather than testimonials or guarantees.

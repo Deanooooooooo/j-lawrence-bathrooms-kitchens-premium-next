@@ -12,11 +12,13 @@
 
 ## Content Constraints
 
-- PASS: Hero uses prominent enquiry form instead of usual hero image/media.
+- PASS: Hero is visual-led with a real bathroom work image and prominent Facebook/logo branding.
 - PASS: No Google Maps embed or map section.
 - PASS: No testimonials/reviews section.
 - PASS: Services limited to bathrooms, kitchens, renovation and general maintenance.
-- PASS: Form is static/front-end only. It notes that a business email or Formspree endpoint must be connected before live enquiries can be received.
+- PASS: No SaaS/form-planner filler remains in public copy.
+- PASS: Enquiry form is compact, homeowner-focused and routes users to Facebook without inventing phone or email details.
+- PASS: Visible interaction added: project type selector, live enquiry preview, copy button, image hover states and FAQ details.
 
 ## Images / Layout
 
@@ -28,6 +30,8 @@
   - `qa/desktop-hero.png`
   - `qa/desktop-full.png`
   - `qa/mobile-full.png`
+  - `qa/desktop-correction.png`
+  - `qa/mobile-correction.png`
 
 ## SEO / Links / Schema
 
@@ -42,8 +46,9 @@
 - PASS: `npm install` completed.
 - NOTE: npm reported 2 dependency advisories; no force upgrade applied.
 - PASS: `npm run build` completed.
+- PASS: Correction build completed with `npm run build`.
 - PASS: `.nojekyll` added to export.
-- PASS: Local Next dev server rendered at `http://localhost:3055`.
+- PASS: Static export rendered locally at `http://127.0.0.1:3057`.
 
 ## Deployment
 
