@@ -32,6 +32,8 @@
   - `qa/mobile-full.png`
   - `qa/desktop-correction.png`
   - `qa/mobile-correction.png`
+  - `qa/desktop-final.png`
+  - `qa/mobile-final.png`
 
 ## SEO / Links / Schema
 
@@ -47,6 +49,7 @@
 - NOTE: npm reported 2 dependency advisories; no force upgrade applied.
 - PASS: `npm run build` completed.
 - PASS: Correction build completed with `npm run build`.
+- PASS: Final local correction build completed after copy/form patch.
 - PASS: `.nojekyll` added to export.
 - PASS: Static export rendered locally at `http://127.0.0.1:3057`.
 
