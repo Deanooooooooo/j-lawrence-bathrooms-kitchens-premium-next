@@ -13,6 +13,7 @@ import {
   Wrench
 } from "lucide-react";
 import { EnquiryForm } from "../components/enquiry-form";
+import { QuoteFocus } from "../components/quote-focus";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://deanooooooooo.github.io";
@@ -204,6 +205,12 @@ export default function HomePage() {
               );
             })}
           </div>
+        </div>
+      </section>
+
+      <section className="section-block section-block--interactive">
+        <div className="section-shell">
+          <QuoteFocus emailAddress={emailAddress} phoneHref={phoneHref} />
         </div>
       </section>
 
