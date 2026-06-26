@@ -1,4 +1,4 @@
-import { Bath, CheckCircle2, ChefHat, Facebook, Hammer, Images, Mail, Phone, ShieldCheck, Wrench } from "lucide-react";
+import { Bath, CheckCircle2, ChefHat, Facebook, Images, Mail, Phone, ShieldCheck, Wrench } from "lucide-react";
 import { EnquiryForm } from "../components/enquiry-form";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
@@ -26,16 +26,10 @@ const services = [
     points: ["Cabinet fitting support", "Surfaces and splashbacks", "Flooring and trim details"]
   },
   {
-    icon: Hammer,
-    title: "Renovation",
-    intro: "Room renovation work for homeowners improving a lived-in space, not just swapping one item.",
-    points: ["Strip-out and refresh work", "Layout improvements", "Finishing and handover"]
-  },
-  {
     icon: Wrench,
-    title: "Maintenance",
-    intro: "Smaller property jobs that need a capable fitter rather than a broad-brush contractor.",
-    points: ["Repairs and adjustments", "Small room improvements", "General maintenance"]
+    title: "Renovation & maintenance",
+    intro: "Room renovation and smaller property jobs that need a capable fitter and tidy finish.",
+    points: ["Strip-out and refresh work", "Repairs and adjustments", "Finishing and handover"]
   }
 ];
 
@@ -97,7 +91,7 @@ const schema = {
     "Experienced kitchen and bathroom fitter in Basildon, also covering renovation and general maintenance work.",
   url: `${siteUrl}${basePath}/`,
   image: `${siteUrl}${basePath}/images/completed-bathroom-crop.jpg`,
-  logo: `${siteUrl}${basePath}/images/j-lawrence-profile.jpg`,
+  logo: `${siteUrl}${basePath}/images/j-lawrence-logo-crop.jpg`,
   telephone: phoneDisplay,
   email: emailAddress,
   areaServed: {
@@ -125,11 +119,7 @@ export default function HomePage() {
       <header className="sticky top-0 z-40 border-b border-ink/10 bg-white/95 backdrop-blur-xl">
         <div className="section-shell flex h-[var(--header-height)] items-center justify-between gap-4">
           <a href="#top" className="brand-lockup" aria-label="J.Lawrence Bathrooms and Kitchens home">
-            <img src={img("/images/j-lawrence-profile.jpg")} alt="" className="brand-lockup__mark" />
-            <span className="brand-lockup__text">
-              J.Lawrence
-              <span>Bathrooms & Kitchens</span>
-            </span>
+            <img src={img("/images/j-lawrence-logo-crop.jpg")} alt="J.Lawrence Bathrooms and Kitchens" className="brand-lockup__logo" />
           </a>
           <nav className="hidden items-center gap-7 text-sm font-bold text-graphite/72 md:flex">
             <a href="#services" className="hover:text-ink">
@@ -180,17 +170,6 @@ export default function HomePage() {
                   {item}
                 </span>
               ))}
-            </div>
-          </div>
-
-          <div className="hero-proof" aria-label="Example bathroom work">
-            <figure>
-              <img src={img("/images/completed-bathroom-crop.jpg")} alt="Completed bathroom with walk-in shower and wood-effect floor" />
-              <figcaption>Bathroom refit finish</figcaption>
-            </figure>
-            <div className="hero-proof__small">
-              <img src={img("/images/bathroom-two-rooms.jpg")} alt="Finished shower room with marble-effect panels" />
-              <span>Real work photos</span>
             </div>
           </div>
 
@@ -252,8 +231,8 @@ export default function HomePage() {
             </div>
           </div>
           <div className="work-grid">
-            {workImages.map((image, index) => (
-              <figure key={image.src} className={index === 0 ? "work-card work-card--large" : "work-card"}>
+            {workImages.map((image) => (
+              <figure key={image.src} className="work-card">
                 <img src={img(image.src)} alt={image.alt} />
                 <figcaption>
                   <Images className="h-4 w-4" aria-hidden="true" />
@@ -319,11 +298,7 @@ export default function HomePage() {
       <footer className="border-t border-ink/10 bg-porcelain py-8">
         <div className="section-shell flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
           <div className="brand-lockup">
-            <img src={img("/images/j-lawrence-profile.jpg")} alt="" className="brand-lockup__mark" />
-            <span className="brand-lockup__text text-ink">
-              J.Lawrence
-              <span>Bathrooms & Kitchens, Basildon</span>
-            </span>
+            <img src={img("/images/j-lawrence-logo-crop.jpg")} alt="J.Lawrence Bathrooms and Kitchens" className="brand-lockup__logo" />
           </div>
           <div className="flex flex-wrap items-center gap-3 text-sm font-bold text-graphite/70">
             <a href={phoneHref} className="hover:text-ink">
