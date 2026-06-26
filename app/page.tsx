@@ -5,7 +5,9 @@ import {
   Facebook,
   Hammer,
   Images,
+  Mail,
   MessageSquareText,
+  Phone,
   Wrench
 } from "lucide-react";
 import { EnquiryForm } from "../components/enquiry-form";
@@ -15,6 +17,9 @@ const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ||
   "https://deanooooooooo.github.io";
 const facebookUrl = "https://www.facebook.com/profile.php?id=100089767462854";
+const phoneDisplay = "+44 7399 500429";
+const phoneHref = "tel:+447399500429";
+const emailAddress = "jasonlawrence439@gmail.com";
 
 const img = (path: string) => `${basePath}${path}`;
 
@@ -65,7 +70,7 @@ const workImages = [
 
 const steps = [
   "Choose the type of work and describe the room.",
-  "Add photos through Facebook so the job can be understood properly.",
+  "Call, email, or send the enquiry form with photos and room details.",
   "Agree the practical details around materials, access and timing.",
   "Keep the finish tidy, usable and suited to the home."
 ];
@@ -85,7 +90,7 @@ const faqs = [
   },
   {
     q: "Is there a phone number?",
-    a: "Use the Facebook page to enquire. That is the contact route available here."
+    a: `Yes. Call ${phoneDisplay} or email ${emailAddress}.`
   }
 ];
 
@@ -98,6 +103,8 @@ const schema = {
   url: `${siteUrl}${basePath}/`,
   image: `${siteUrl}${basePath}/images/completed-bathroom-reel-thumb.jpg`,
   logo: `${siteUrl}${basePath}/images/j-lawrence-profile.jpg`,
+  telephone: phoneDisplay,
+  email: emailAddress,
   areaServed: {
     "@type": "City",
     name: "Basildon"
@@ -143,9 +150,9 @@ export default function HomePage() {
               FAQ
             </a>
           </nav>
-          <a href="#enquiry" className="button button--dark">
-            <MessageSquareText className="h-4 w-4" aria-hidden="true" />
-            Enquire
+          <a href={phoneHref} className="button button--dark">
+            <Phone className="h-4 w-4" aria-hidden="true" />
+            Call now
           </a>
         </div>
       </header>
@@ -165,17 +172,27 @@ export default function HomePage() {
               Bathroom and kitchen fitting in Basildon
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/82">
-              Kitchen and bathroom fitting, renovation and maintenance work for homeowners who want
-              a clean finish and a room that feels ready to use.
+              Experienced kitchen and bathroom fitter for refits, room updates, renovation and
+              maintenance work around Basildon.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a href="#enquiry" className="button button--primary">
+              <a href={phoneHref} className="button button--primary">
+                <Phone className="h-4 w-4" aria-hidden="true" />
+                Call {phoneDisplay}
+              </a>
+              <a href="#enquiry" className="button button--ghost">
                 <MessageSquareText className="h-4 w-4" aria-hidden="true" />
                 Request a quote
               </a>
-              <a href={facebookUrl} className="button button--ghost">
-                <Facebook className="h-4 w-4" aria-hidden="true" />
-                Message
+            </div>
+            <div className="hero-contact-strip" aria-label="Contact details">
+              <a href={phoneHref}>
+                <Phone aria-hidden="true" />
+                {phoneDisplay}
+              </a>
+              <a href={`mailto:${emailAddress}`}>
+                <Mail aria-hidden="true" />
+                {emailAddress}
               </a>
             </div>
             <div className="mt-8 grid max-w-xl grid-cols-2 gap-2 sm:grid-cols-4">
@@ -188,7 +205,7 @@ export default function HomePage() {
           </div>
 
           <aside id="enquiry" className="hero-form-wrap" aria-label="Request a quote">
-            <EnquiryForm facebookUrl={facebookUrl} />
+            <EnquiryForm emailAddress={emailAddress} phoneHref={phoneHref} phoneDisplay={phoneDisplay} />
           </aside>
         </div>
       </section>
@@ -290,13 +307,19 @@ export default function HomePage() {
           <div>
             <p className="text-sm font-extrabold uppercase text-basin">Ready to ask?</p>
             <h2 className="mt-3 max-w-2xl font-display text-4xl font-black leading-tight text-white sm:text-5xl">
-              Message with the room, photos and what needs changing.
+              Call or email with the room, photos and what needs changing.
             </h2>
           </div>
-          <a href={facebookUrl} className="button button--primary">
-            <Facebook className="h-4 w-4" aria-hidden="true" />
-            Open Facebook
-          </a>
+          <div className="flex flex-wrap gap-3">
+            <a href={phoneHref} className="button button--primary">
+              <Phone className="h-4 w-4" aria-hidden="true" />
+              Call now
+            </a>
+            <a href={`mailto:${emailAddress}`} className="button button--ghost">
+              <Mail className="h-4 w-4" aria-hidden="true" />
+              Email enquiry
+            </a>
+          </div>
         </div>
       </section>
 
@@ -310,6 +333,12 @@ export default function HomePage() {
             </span>
           </div>
           <div className="flex flex-wrap items-center gap-3 text-sm font-bold text-graphite/70">
+            <a href={phoneHref} className="hover:text-ink">
+              {phoneDisplay}
+            </a>
+            <a href={`mailto:${emailAddress}`} className="hover:text-ink">
+              Email
+            </a>
             <a href="#services" className="hover:text-ink">
               Services
             </a>

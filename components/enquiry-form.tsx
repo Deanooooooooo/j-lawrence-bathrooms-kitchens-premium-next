@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Bath, Check, ChefHat, Facebook, Hammer, MessageSquareText, Wrench } from "lucide-react";
+import { Bath, Check, ChefHat, Hammer, Mail, Phone, Wrench } from "lucide-react";
 
 const options = [
   {
@@ -27,10 +27,12 @@ const options = [
 ];
 
 type EnquiryFormProps = {
-  facebookUrl: string;
+  emailAddress: string;
+  phoneHref: string;
+  phoneDisplay: string;
 };
 
-export function EnquiryForm({ facebookUrl }: EnquiryFormProps) {
+export function EnquiryForm({ emailAddress, phoneHref, phoneDisplay }: EnquiryFormProps) {
   const [selected, setSelected] = useState(options[0]);
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
@@ -56,28 +58,29 @@ export function EnquiryForm({ facebookUrl }: EnquiryFormProps) {
     [area, contact, details, name, selected, timing]
   );
 
-  async function sendEnquiry() {
-    try {
-      await navigator.clipboard.writeText(preview);
-      setSent(true);
-      window.setTimeout(() => setSent(false), 1800);
-    } catch {
-      setSent(false);
-    }
-    window.open(facebookUrl, "_blank", "noopener,noreferrer");
+  function sendEnquiry() {
+    const subject = encodeURIComponent(`${selected.label} enquiry`);
+    const body = encodeURIComponent(preview);
+    setSent(true);
+    window.setTimeout(() => setSent(false), 1800);
+    window.location.href = `mailto:${emailAddress}?subject=${subject}&body=${body}`;
   }
 
   return (
     <form className="quote-panel" onSubmit={(event) => event.preventDefault()}>
       <div className="quote-panel__top">
         <div className="quote-panel__brand">
-          <MessageSquareText aria-hidden="true" />
-          <span>Request a quote</span>
+          <Mail aria-hidden="true" />
+          <span>Quote request</span>
         </div>
-        <h3>Tell us what room needs work</h3>
+        <h3>Request a bathroom or kitchen quote</h3>
         <p>
-          Add a few details and the best way to reach you. Photos can be sent afterwards if needed.
+          Send the room details, preferred timing and best contact number. Photos can be added by email.
         </p>
+        <a className="quote-panel__phone" href={phoneHref}>
+          <Phone aria-hidden="true" />
+          Prefer to talk? Call {phoneDisplay}
+        </a>
       </div>
 
       <div className="service-switch" role="tablist" aria-label="Choose enquiry type">
@@ -141,12 +144,12 @@ export function EnquiryForm({ facebookUrl }: EnquiryFormProps) {
 
       <div className="quote-panel__actions">
         <button className="button button--primary" type="button" onClick={sendEnquiry}>
-          {sent ? <Check aria-hidden="true" /> : <MessageSquareText aria-hidden="true" />}
-          {sent ? "Details copied" : "Send enquiry"}
+          {sent ? <Check aria-hidden="true" /> : <Mail aria-hidden="true" />}
+          {sent ? "Opening email" : "Email enquiry"}
         </button>
-        <a className="button button--outline" href={facebookUrl} target="_blank" rel="noreferrer">
-          <Facebook aria-hidden="true" />
-          Facebook
+        <a className="button button--outline" href={phoneHref}>
+          <Phone aria-hidden="true" />
+          Call
         </a>
       </div>
     </form>

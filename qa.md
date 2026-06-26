@@ -6,9 +6,10 @@
 - PASS: Location from Facebook OG/search snippets: Basildon.
 - PASS: Public description used only for service scope: experienced kitchen and bathroom fitter; renovation and general maintenance work.
 - PASS: Facebook likes were verified in metadata/search snippets, but not used as a testimonial, rating, review count or guarantee.
-- PASS: No public phone, email, address, GMB profile or independent website found.
+- PASS: Public phone/email found via indexed source snippets and used as primary contact: `+44 7399 500429`, `jasonlawrence439@gmail.com`.
+- PASS: No GMB profile, Google map source or independent website used.
 - PASS: No prices, guarantees, certifications, years in business, ratings or invented review claims added.
-- PASS: Facebook link is used as the only source/social CTA.
+- PASS: Facebook remains a secondary source/social link only; phone and email are primary.
 
 ## Content Constraints
 
@@ -17,7 +18,7 @@
 - PASS: No testimonials/reviews section.
 - PASS: Services limited to bathrooms, kitchens, renovation and general maintenance.
 - PASS: No SaaS/form-planner filler remains in public copy.
-- PASS: Enquiry form is compact, homeowner-focused and routes users to Facebook without inventing phone or email details.
+- PASS: Enquiry form is first-viewport/top-right on desktop, homeowner-focused and routes to email/call instead of Facebook.
 - PASS: Visible interaction added: project type selector, live enquiry preview, copy button, image hover states and FAQ details.
 
 ## Images / Layout
@@ -36,14 +37,16 @@
   - `qa/mobile-final.png`
   - `qa/desktop-rebuild.png`
   - `qa/mobile-rebuild.png`
+  - `qa/phone-first-desktop.png`
+  - `qa/phone-first-mobile.png`
 
 ## SEO / Links / Schema
 
 - PASS: One H1.
 - PASS: Title, meta description, canonical, OpenGraph and Twitter metadata present.
-- PASS: LocalBusiness-style `HomeAndConstructionBusiness` schema includes name, description, Basildon area served, image, URL, sameAs Facebook and service offers.
+- PASS: LocalBusiness-style `HomeAndConstructionBusiness` schema includes name, description, Basildon area served, image, URL, sameAs Facebook, phone, email and service offers.
 - PASS: Form markup present in exported HTML.
-- PASS: No phone/email schema added because none was publicly verified.
+- PASS: Phone and email schema added after public-source verification.
 
 ## Build / Runtime
 
@@ -53,6 +56,7 @@
 - PASS: Correction build completed with `npm run build`.
 - PASS: Final local correction build completed after copy/form patch.
 - PASS: Rebuild places the enquiry form in the hero/right first viewport and removes the lower form workaround.
+- PASS: Phone-first correction build completed; exported HTML contains phone/email, one form, base-path CSS/images, and no rejected copy.
 - PASS: `.nojekyll` added to export.
 - PASS: Static export rendered locally at `http://127.0.0.1:3057`.
 
