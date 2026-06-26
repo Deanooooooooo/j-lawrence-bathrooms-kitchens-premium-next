@@ -121,7 +121,7 @@ export default function HomePage() {
           <a href="#top" className="brand-lockup" aria-label="J.Lawrence Bathrooms and Kitchens home">
             <img src={img("/images/j-lawrence-logo-crop.jpg")} alt="J.Lawrence Bathrooms and Kitchens" className="brand-lockup__logo" />
           </a>
-          <nav className="hidden items-center gap-7 text-sm font-bold text-graphite/72 md:flex">
+          <nav className="site-nav hidden items-center gap-7 font-bold text-graphite/72 md:flex">
             <a href="#services" className="hover:text-ink">
               Services
             </a>
@@ -142,7 +142,11 @@ export default function HomePage() {
         </div>
       </header>
 
-      <section id="top" className="hero">
+      <section
+        id="top"
+        className="hero"
+        style={{ backgroundImage: `url(${img("/images/completed-bathroom-crop.jpg")})` }}
+      >
         <div className="section-shell hero__content">
           <div className="hero-copy">
             <p className="eyebrow">Basildon bathroom & kitchen fitter</p>
