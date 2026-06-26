@@ -8,7 +8,7 @@ const modes = [
     key: "bathroom",
     label: "Bathroom",
     icon: Bath,
-    headline: "Bathroom refits need clear photos, access notes and the finish you want.",
+    headline: "Planning a bathroom refit or repair?",
     points: ["shower or bath area", "tiling and flooring", "suite changes", "current room photos"],
     subject: "Bathroom enquiry"
   },
@@ -16,7 +16,7 @@ const modes = [
     key: "kitchen",
     label: "Kitchen",
     icon: ChefHat,
-    headline: "Kitchen work is easier to quote when the fitting scope is clear.",
+    headline: "Need help with kitchen fitting or finishing?",
     points: ["cabinets or surfaces", "splashback details", "flooring or trims", "appliance/access notes"],
     subject: "Kitchen enquiry"
   },
@@ -24,7 +24,7 @@ const modes = [
     key: "renovation",
     label: "Renovation",
     icon: Hammer,
-    headline: "Renovation jobs need the before state and what should change.",
+    headline: "Updating a room or changing the layout?",
     points: ["strip-out needed", "what stays", "finish level", "timing and access"],
     subject: "Renovation enquiry"
   },
@@ -32,7 +32,7 @@ const modes = [
     key: "maintenance",
     label: "Maintenance",
     icon: Wrench,
-    headline: "Smaller jobs still need the right detail so the visit is useful.",
+    headline: "Got repairs or finishing jobs to sort?",
     points: ["repair list", "anything urgent", "photos if possible", "best contact time"],
     subject: "Maintenance enquiry"
   }
@@ -52,10 +52,10 @@ export function QuoteFocus({ emailAddress, phoneHref }: QuoteFocusProps) {
   return (
     <section className="focus-panel" aria-label="Choose the type of quote request">
       <div className="focus-panel__copy">
-        <p className="eyebrow">Interactive quote focus</p>
-        <h2>Pick the job type and the page sharpens the ask.</h2>
+        <p className="eyebrow">Choose the job type</p>
+        <h2>Tell Jason what you need fitted, repaired or refreshed.</h2>
         <p>
-          This keeps the form useful without turning the site into software. The visitor gets a clear path, Jason gets enough detail to reply properly.
+          Pick the closest option, check the details that help, then call or send an enquiry with the basics.
         </p>
       </div>
       <div className="focus-panel__surface">

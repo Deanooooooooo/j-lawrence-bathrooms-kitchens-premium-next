@@ -17,9 +17,9 @@
 - PASS: No Google Maps embed or map section.
 - PASS: No testimonials/reviews section.
 - PASS: Services limited to bathrooms, kitchens, renovation and general maintenance.
-- PASS: No SaaS/form-planner filler remains in public copy.
+- PASS: No SaaS/form-planner/internal build rationale remains in public copy.
 - PASS: Enquiry form is first-viewport/top-right on desktop, homeowner-focused and routes to email/call instead of Facebook.
-- PASS: Visible interaction added: project type selector, live enquiry preview, copy button, image hover states and FAQ details.
+- PASS: Visible interaction added: project type selector, dynamic quote guidance, image hover states and FAQ details.
 
 ## Images / Layout
 
@@ -53,6 +53,7 @@
 - PASS: `npm install` completed.
 - NOTE: npm reported 2 dependency advisories; no force upgrade applied.
 - PASS: `npm run build` completed.
+- PASS: Copy correction build completed after removing internal/client-facing page rationale from visible sections.
 - PASS: Correction build completed with `npm run build`.
 - PASS: Final local correction build completed after copy/form patch.
 - PASS: Rebuild places the enquiry form in the hero/right first viewport and removes the lower form workaround.

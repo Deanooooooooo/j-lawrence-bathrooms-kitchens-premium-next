@@ -14,4 +14,4 @@ NEXT_PUBLIC_BASE_PATH=/j-lawrence-bathrooms-kitchens-premium-next NEXT_PUBLIC_SI
 
 - Built as a GitHub Pages project site with static export.
 - No Google Maps embed and no testimonials/reviews.
-- No public phone or email was verified; the enquiry helper prepares a Facebook message.
+- Public phone and email were verified from indexed source snippets and are used as primary contact routes.

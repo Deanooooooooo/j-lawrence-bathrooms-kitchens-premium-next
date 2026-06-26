@@ -51,7 +51,7 @@ const proofPoints = [
   "Basildon based bathroom, kitchen and renovation work.",
   "Direct phone and email contact with Jason.",
   "Public Facebook profile with real project photos.",
-  "Quote route built around room details, photos, timing and location."
+  "Clear quote requests by phone, email or the form below."
 ];
 
 const workImages = [
@@ -73,10 +73,10 @@ const workImages = [
 ];
 
 const steps = [
-  "Call or send the quote form.",
-  "Share the room, photos, timing and area.",
-  "Agree what is being fitted, repaired or refreshed.",
-  "Get the work finished cleanly and ready to use."
+  "Call Jason or send the enquiry form.",
+  "Share the room, location, photos and rough timing.",
+  "Agree the fitting, repair or renovation work needed.",
+  "Get the job completed cleanly and ready to use."
 ];
 
 const faqs = [
@@ -179,8 +179,8 @@ export default function HomePage() {
       <section className="metric-strip section-shell" aria-label="Quick facts">
         {[
           ["4", "service lanes"],
-          ["1", "direct quote route"],
-          ["3", "public work photos mapped"]
+          ["1", "direct phone number"],
+          ["3", "real work photos"]
         ].map(([value, label]) => (
           <div key={label} className="metric-card">
             <strong>{value}</strong>
@@ -192,7 +192,7 @@ export default function HomePage() {
       <section id="services" className="section-block section-block--light">
         <div className="section-shell">
           <p className="eyebrow">Services</p>
-          <h2 className="section-title">Practical room work without the brochure fluff.</h2>
+          <h2 className="section-title">Bathroom, kitchen, renovation and maintenance work.</h2>
           <div className="service-grid">
             {services.map((service) => {
               const Icon = service.icon;
@@ -217,10 +217,10 @@ export default function HomePage() {
       <section id="proof" className="section-block section-block--dark">
         <div className="section-shell proof-grid">
           <div>
-            <p className="eyebrow">Confidence path</p>
-            <h2 className="section-title">The page should make the call feel obvious.</h2>
+            <p className="eyebrow">Why call</p>
+            <h2 className="section-title">A direct way to discuss the job with Jason.</h2>
             <p className="section-intro">
-              The useful proof is simple: what work is offered, where the business is based, what real photos exist, and how to ask for a quote.
+              J.Lawrence Bathrooms and Kitchens covers practical fitting, renovation and maintenance work around Basildon.
             </p>
           </div>
           <div className="proof-list">
@@ -237,9 +237,9 @@ export default function HomePage() {
       <section id="work" className="work-section">
         <div className="section-shell">
           <p className="eyebrow">Real project photos</p>
-          <h2 className="section-title">Vertical bathroom photos shown in vertical frames.</h2>
+          <h2 className="section-title">Recent bathroom and kitchen work.</h2>
           <p className="section-intro">
-            These are public Facebook assets, so the layout respects their portrait shape instead of chopping them into bad landscape cards.
+            A small look at public project photos from J.Lawrence Bathrooms and Kitchens.
           </p>
         </div>
         <div className="work-reel" aria-label="J.Lawrence work photos">
@@ -259,7 +259,7 @@ export default function HomePage() {
         <div className="section-shell story-grid">
           <div>
             <p className="eyebrow">How quote requests work</p>
-            <h2 className="section-title">Send enough detail for the job to make sense.</h2>
+            <h2 className="section-title">Ask about a quote in a few minutes.</h2>
             <div className="step-list">
               {steps.map((step) => (
                 <div key={step} className="step-row">
@@ -270,8 +270,8 @@ export default function HomePage() {
             </div>
           </div>
           <div className="quote-brief" aria-label="Useful details for quote requests">
-            <p className="eyebrow">Good enquiry details</p>
-            <h3>Room, location, photos, timing and finish.</h3>
+            <p className="eyebrow">Helpful details</p>
+            <h3>Room, location, photos and timing.</h3>
             <ul>
               <li>What room needs fitting, repair or refresh work.</li>
               <li>Where the job is around Basildon or nearby.</li>
@@ -286,7 +286,7 @@ export default function HomePage() {
         <div className="section-shell faq-grid">
           <div>
             <p className="eyebrow">FAQ</p>
-            <h2 className="section-title">Clear answers before the call.</h2>
+            <h2 className="section-title">Before you call.</h2>
           </div>
           <div className="faq-list">
             {faqs.map((faq) => (
@@ -327,7 +327,7 @@ export default function HomePage() {
             <h3>Bathroom, kitchen, renovation and maintenance enquiries.</h3>
             <a href="#enquiry" className="button button--gold">
               <Sparkles aria-hidden="true" />
-              Start quote request
+              Request a quote
             </a>
           </div>
         </div>
